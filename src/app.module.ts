@@ -5,6 +5,7 @@ import { ConfigModule } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
 import { AuthModule } from './auth/auth.module';
 import { ThrottlerModule } from '@nestjs/throttler';
+import { CockpitModule } from './cockpit/cockpit.module';
 
 @Module({
   imports: [
@@ -32,6 +33,7 @@ import { ThrottlerModule } from '@nestjs/throttler';
       synchronize: false,
     }),
     AuthModule,
+    CockpitModule,
   ],
   controllers: [AppController],
   providers: [AppService],
