@@ -1,8 +1,11 @@
+import { Category } from '../entities/reference.entity';
+
 export class ResponseReferenceDto {
   id: number;
-  title: string;
+  title?: string;
   url: string;
-  description?: string;
+  description: string;
+  category: Category;
   createdAt: Date;
   updatedAt: Date;
   _links?: {

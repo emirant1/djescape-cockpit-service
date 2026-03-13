@@ -15,6 +15,7 @@ export class ReferenceMapper {
     reference.title = dto.title;
     reference.url = dto.url;
     reference.description = dto.description;
+    reference.category = dto.category;
     reference.createdAt = creationDate;
     reference.updatedAt = creationDate;
     return reference;
@@ -34,6 +35,7 @@ export class ReferenceMapper {
       title: reference.title,
       url: reference.url,
       description: reference.description,
+      category: reference.category,
       createdAt: reference.createdAt,
       updatedAt: reference.updatedAt,
       _links: {

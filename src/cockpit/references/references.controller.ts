@@ -10,11 +10,16 @@ import {
   Post,
   Put,
   Req,
+  UseGuards,
 } from '@nestjs/common';
 import express from 'express';
 import { ReferencesService } from './references.service';
 import { ResponseReferenceDto } from './dto/response-reference.dto';
 import { RequestReferenceDto } from './dto/request-reference.dto';
+import { Roles } from '../../auth/decorator/roles.decorator';
+import { UserRole } from '../../auth/entity/user.entity';
+import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
+import { RolesGuard } from '../../auth/guard/roles-guard';
 
 @Controller('cockpit/reference')
 export class ReferencesController {
@@ -38,6 +43,8 @@ export class ReferencesController {
   }
 
   @Post()
+  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @HttpCode(HttpStatus.CREATED)
   createReference(
     @Body() request: RequestReferenceDto,
@@ -50,6 +57,8 @@ export class ReferencesController {
   }
 
   @Put(':id')
+  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   updateReference(
     @Param('id', ParseIntPipe) id: number,
     @Body() request: RequestReferenceDto,
@@ -63,6 +72,8 @@ export class ReferencesController {
   }
 
   @Delete(':id')
+  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   @HttpCode(HttpStatus.NO_CONTENT)
   deleteReference(@Param('id', ParseIntPipe) id: number): Promise<void> {
     return this.referencesService.deleteReference(id);
