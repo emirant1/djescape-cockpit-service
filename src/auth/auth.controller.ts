@@ -9,7 +9,7 @@ import { UserRole } from './entity/user.entity';
 import { RolesGuard } from './guard/roles-guard';
 import { LoginThrottlerGuard } from './guard/login-throttler.guard';
 
-@Controller('auth')
+@Controller('api/auth')
 export class AuthController {
   constructor(private readonly authService: AuthService) {}
 

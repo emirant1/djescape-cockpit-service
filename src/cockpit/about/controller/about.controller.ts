@@ -21,7 +21,7 @@ import { UserRole } from '../../../auth/entity/user.entity';
 import { JwtAuthGuard } from '../../../auth/guard/jwt-auth.guard';
 import { RolesGuard } from '../../../auth/guard/roles-guard';
 
-@Controller('cockpit/about')
+@Controller('api/cockpit/about')
 export class AboutController {
   constructor(private readonly aboutService: AboutService) {
     /* Empty body */

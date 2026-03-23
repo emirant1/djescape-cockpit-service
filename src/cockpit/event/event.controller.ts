@@ -21,7 +21,7 @@ import { UserRole } from '../../auth/entity/user.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { RolesGuard } from '../../auth/guard/roles-guard';
 
-@Controller('cockpit/event')
+@Controller('api/cockpit/event')
 export class EventController {
   constructor(private readonly eventService: EventService) {
     /* Empty body */

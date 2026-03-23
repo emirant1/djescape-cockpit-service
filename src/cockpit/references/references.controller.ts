@@ -21,7 +21,7 @@ import { UserRole } from '../../auth/entity/user.entity';
 import { JwtAuthGuard } from '../../auth/guard/jwt-auth.guard';
 import { RolesGuard } from '../../auth/guard/roles-guard';
 
-@Controller('cockpit/reference')
+@Controller('api/cockpit/reference')
 export class ReferencesController {
   constructor(private readonly referencesService: ReferencesService) {
     /* Empty body */
