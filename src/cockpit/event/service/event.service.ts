@@ -43,7 +43,11 @@ export class EventService {
    * @param baseUrl The Base URL that will be used for HATEOAS
    */
   getAllEvents = async (baseUrl: string): Promise<ResponseEventDto[]> => {
-    const events = await this.eventRepository.find();
+    const events = await this.eventRepository.find({
+      order: {
+        eventDate: 'ASC'
+      }
+    });
     return events.map((event) =>
       this.eventMapper.fromEventToDto(event, baseUrl),
     );

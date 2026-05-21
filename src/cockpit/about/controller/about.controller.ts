@@ -33,6 +33,8 @@ export class AboutController {
   }
 
   @Get('list')
+  @Roles(UserRole.ADMIN)
+  @UseGuards(JwtAuthGuard, RolesGuard)
   getAboutList(@Req() req: express.Request): Promise<ResponseAboutDto[]> {
     return this.aboutService.getAllAbouts(this.getBaseUrl(req));
   }
