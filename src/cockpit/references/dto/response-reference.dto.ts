@@ -6,8 +6,6 @@ export class ResponseReferenceDto {
   url: string;
   description: string;
   category: Category;
-  createdAt: Date;
-  updatedAt: Date;
   _links?: {
     self: { href: string };
     all: { href: string };

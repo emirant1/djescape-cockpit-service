@@ -13,5 +13,6 @@ export class RequestReferenceDto {
   @IsString()
   description: string;
 
+  @IsNotEmpty()
   category: Category;
 }

@@ -28,17 +28,12 @@ export class ReferencesController {
   }
 
   @Get()
-  getAllReferences(
-    @Req() req: express.Request,
-  ): Promise<ResponseReferenceDto[]> {
+  getAllReferences(@Req() req: express.Request): Promise<ResponseReferenceDto[]> {
     return this.referencesService.getAllReferences(this.getBaseUrl(req));
   }
 
   @Get(':id')
-  getReference(
-    @Param('id', ParseIntPipe) id: number,
-    @Req() req: express.Request,
-  ): Promise<ResponseReferenceDto> {
+  getReference(@Param('id', ParseIntPipe) id: number, @Req() req: express.Request): Promise<ResponseReferenceDto> {
     return this.referencesService.getReferenceById(id, this.getBaseUrl(req));
   }
 
@@ -46,13 +41,8 @@ export class ReferencesController {
   @Roles(UserRole.ADMIN)
   @UseGuards(JwtAuthGuard, RolesGuard)
   @HttpCode(HttpStatus.CREATED)
-  createReference(
-    @Body() request: RequestReferenceDto,
-    @Req() req: express.Request,
-  ): Promise<ResponseReferenceDto> {
-    return this.referencesService.createReference(
-      request,
-      this.getBaseUrl(req),
+  createReference(@Body() request: RequestReferenceDto, @Req() req: express.Request): Promise<ResponseReferenceDto> {
+    return this.referencesService.createReference(request, this.getBaseUrl(req),
     );
   }
 
@@ -64,11 +54,7 @@ export class ReferencesController {
     @Body() request: RequestReferenceDto,
     @Req() req: express.Request,
   ): Promise<ResponseReferenceDto> {
-    return this.referencesService.updateReferenceById(
-      id,
-      request,
-      this.getBaseUrl(req),
-    );
+    return this.referencesService.updateReferenceById(id, request, this.getBaseUrl(req));
   }
 
   @Delete(':id')
